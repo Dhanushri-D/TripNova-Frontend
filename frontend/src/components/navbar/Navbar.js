@@ -200,9 +200,32 @@ const Navbar = () => {
               <hr style={{ borderColor: 'rgba(255,255,255,0.1)' }} />
               {currentUser ? (
                 <>
-                  <Link to="/dashboard" className="nav-link-custom d-block mb-1" onClick={() => setMenuOpen(false)}>Dashboard</Link>
-                  <Link to="/profile" className="nav-link-custom d-block mb-1" onClick={() => setMenuOpen(false)}>Profile</Link>
-                  <button className="btn btn-sm mt-2" style={{ color: '#EA9940', background: 'none', border: '1px solid #EA9940', borderRadius: 8 }} onClick={handleLogout}>Logout</button>
+                  <div style={{ padding: '8px 0 6px', display: 'flex', alignItems: 'center', gap: 10 }}>
+                    <div style={{ width: 36, height: 36, borderRadius: '50%', background: 'linear-gradient(135deg, #307082, #EA9940)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.9rem', fontWeight: 700, color: 'white', flexShrink: 0 }}>
+                      {currentUser.name?.charAt(0).toUpperCase()}
+                    </div>
+                    <div>
+                      <div style={{ color: 'white', fontWeight: 600, fontSize: '0.9rem' }}>{currentUser.name}</div>
+                      <div style={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.75rem' }}>{currentUser.email}</div>
+                    </div>
+                  </div>
+                  <hr style={{ borderColor: 'rgba(255,255,255,0.1)', margin: '6px 0' }} />
+                  {[
+                    { to: '/dashboard',     icon: 'bi-speedometer2',   label: 'Dashboard' },
+                    { to: '/my-bookings',   icon: 'bi-calendar-check', label: 'My Bookings' },
+                    { to: '/my-enquiries',  icon: 'bi-chat-dots',      label: 'My Enquiries' },
+                    { to: '/wishlist',      icon: 'bi-heart',          label: 'Wishlist' },
+                    { to: '/trip-planner',  icon: 'bi-map',            label: 'Trip Planner' },
+                    { to: '/budget-planner',icon: 'bi-wallet2',        label: 'Budget Planner' },
+                    { to: '/profile',       icon: 'bi-person',         label: 'Profile' },
+                  ].map(item => (
+                    <Link key={item.to} to={item.to} className="nav-link-custom d-flex align-items-center gap-2 mb-1" onClick={() => setMenuOpen(false)}>
+                      <i className={`bi ${item.icon}`}></i>{item.label}
+                    </Link>
+                  ))}
+                  <button className="btn btn-sm mt-2" style={{ color: '#EA9940', background: 'none', border: '1px solid #EA9940', borderRadius: 8 }} onClick={handleLogout}>
+                    <i className="bi bi-box-arrow-right me-1"></i>Logout
+                  </button>
                 </>
               ) : (
                 <div className="d-flex gap-2 mt-2">
