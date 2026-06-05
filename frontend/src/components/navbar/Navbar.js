@@ -29,7 +29,7 @@ const Navbar = () => {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  const handleLogout = () => { logout(); navigate('/'); setMenuOpen(false); setDropdownOpen(false); };
+  const handleLogout = () => { logout(); setMenuOpen(false); setDropdownOpen(false); window.location.href = '/'; };
 
   const handleSearch = (e) => {
     e.preventDefault();
