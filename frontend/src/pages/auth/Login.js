@@ -80,12 +80,7 @@ const Login = () => {
           </p>
         </div>
 
-        {/* Demo credentials */}
-        <div style={{ background: 'rgba(48,112,130,0.06)', borderRadius: 10, padding: '12px 16px', marginTop: 20 }}>
-          <p style={{ fontSize: '0.78rem', color: '#666', margin: 0, fontFamily: 'Inter' }}>
-            <strong>Demo Admin:</strong> admin@tripnova.com / admin123
-          </p>
-        </div>
+
       </motion.div>
     </div>
   );

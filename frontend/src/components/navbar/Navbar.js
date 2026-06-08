@@ -162,10 +162,7 @@ const Navbar = () => {
                 </AnimatePresence>
               </div>
             ) : (
-              <>
-                <Link to="/login" className="btn btn-sm btn-outline-teal">Login</Link>
-                <Link to="/signup" className="btn btn-sm btn-orange">Sign Up</Link>
-              </>
+              <Link to="/signup" className="btn btn-sm btn-orange">Sign Up</Link>
             )}
           </div>
 
@@ -229,7 +226,6 @@ const Navbar = () => {
                 </>
               ) : (
                 <div className="d-flex gap-2 mt-2">
-                  <Link to="/login" className="btn btn-sm btn-outline-teal" onClick={() => setMenuOpen(false)}>Login</Link>
                   <Link to="/signup" className="btn btn-sm btn-orange" onClick={() => setMenuOpen(false)}>Sign Up</Link>
                 </div>
               )}
