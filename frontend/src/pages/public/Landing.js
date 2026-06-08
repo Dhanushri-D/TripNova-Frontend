@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import Footer from '../../components/footer/Footer';
 import { motion } from 'framer-motion';
 
 const DESTINATIONS_PREVIEW = [
@@ -278,14 +279,7 @@ const Landing = () => {
         </div>
       </section>
 
-      {/* Footer */}
-      <div style={{ background: '#0d1a24', padding: '20px 0', textAlign: 'center' }}>
-        <p style={{ color: 'rgba(255,255,255,0.4)', fontSize: '0.85rem', margin: 0 }}>
-          © 2024 TripNova. All rights reserved. |{' '}
-          <Link to="/privacy" style={{ color: 'rgba(255,255,255,0.4)', textDecoration: 'none' }}>Privacy</Link> |{' '}
-          <Link to="/terms" style={{ color: 'rgba(255,255,255,0.4)', textDecoration: 'none' }}>Terms</Link>
-        </p>
-      </div>
+      <Footer />
     </div>
   );
 };
