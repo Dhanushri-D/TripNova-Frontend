@@ -115,6 +115,11 @@ const Landing = () => {
                       <i className="bi bi-box-arrow-in-right me-2"></i>Login
                     </Link>
                   </motion.div>
+                  <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                    <Link to="/destinations" style={{ background: 'rgba(255,255,255,0.1)', color: 'white', border: '2px solid rgba(255,255,255,0.4)', borderRadius: 12, padding: '14px 32px', fontFamily: 'Poppins', fontWeight: 700, fontSize: '1rem', textDecoration: 'none', display: 'inline-block', backdropFilter: 'blur(10px)' }}>
+                      <i className="bi bi-compass me-2"></i>Explore Trips
+                    </Link>
+                  </motion.div>
                 </div>
               </motion.div>
 
