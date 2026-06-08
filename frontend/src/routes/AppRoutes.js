@@ -62,9 +62,11 @@ const AppRoutes = () => (
       <Route path="/" element={<Landing />} />
 
       {/* Auth */}
-      <Route path="/login" element={<Login />} />
-      <Route path="/signup" element={<Signup />} />
-      <Route path="/forgot-password" element={<ForgotPassword />} />
+      <Route element={<MainLayout />}>
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
+      </Route>
 
       {/* Public with MainLayout */}
       <Route element={<MainLayout />}>
