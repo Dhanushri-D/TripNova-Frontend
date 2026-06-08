@@ -110,18 +110,9 @@ const Landing = () => {
                   From the serene backwaters of Kerala to the pristine beaches of Maldives — TripNova crafts extraordinary journeys that become lifelong memories.
                 </p>
                 <div className="d-flex flex-wrap gap-3">
-                  <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} onClick={() => navigate('/home')}
-                    style={{ background: 'linear-gradient(135deg, #EA9940, #d4882e)', color: 'white', border: 'none', borderRadius: 12, padding: '14px 32px', fontFamily: 'Poppins', fontWeight: 700, fontSize: '1rem', cursor: 'pointer', boxShadow: '0 8px 24px rgba(234,153,64,0.4)' }}>
-                    <i className="bi bi-compass me-2"></i>Explore Trips
-                  </motion.button>
                   <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                    <Link to="/login" style={{ background: 'rgba(255,255,255,0.15)', color: 'white', border: '2px solid rgba(255,255,255,0.3)', borderRadius: 12, padding: '12px 28px', fontFamily: 'Poppins', fontWeight: 600, fontSize: '1rem', textDecoration: 'none', display: 'inline-block', backdropFilter: 'blur(10px)' }}>
+                    <Link to="/login" style={{ background: 'linear-gradient(135deg, #EA9940, #d4882e)', color: 'white', border: 'none', borderRadius: 12, padding: '14px 32px', fontFamily: 'Poppins', fontWeight: 700, fontSize: '1rem', textDecoration: 'none', display: 'inline-block', boxShadow: '0 8px 24px rgba(234,153,64,0.4)' }}>
                       <i className="bi bi-box-arrow-in-right me-2"></i>Login
-                    </Link>
-                  </motion.div>
-                  <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                    <Link to="/signup" style={{ background: 'rgba(48,112,130,0.4)', color: 'white', border: '2px solid #307082', borderRadius: 12, padding: '12px 28px', fontFamily: 'Poppins', fontWeight: 600, fontSize: '1rem', textDecoration: 'none', display: 'inline-block', backdropFilter: 'blur(10px)' }}>
-                      <i className="bi bi-person-plus me-2"></i>Sign Up Free
                     </Link>
                   </motion.div>
                 </div>
