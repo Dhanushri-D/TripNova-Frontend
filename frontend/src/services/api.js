@@ -98,4 +98,11 @@ export const budgetPlansAPI = {
   remove: (id) => api.delete(`/budget-plans/${id}`),
 };
 
+// Wishlist
+export const wishlistAPI = {
+  getMine: () => api.get('/wishlist'),
+  add: (data) => api.post('/wishlist', data),
+  remove: (itemId, itemType) => api.delete(`/wishlist/${itemId}/${itemType}`),
+};
+
 export default api;

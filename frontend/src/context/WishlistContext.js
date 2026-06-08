@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import { getData, saveData } from '../services/localStorageService';
 import { useAuth } from './AuthContext';
+import api from '../services/api';
 
 const WishlistContext = createContext();
 
@@ -10,35 +10,29 @@ export const WishlistProvider = ({ children }) => {
 
   useEffect(() => {
     if (currentUser) {
-      const all = getData('wishlists');
-      const userWishlist = all.find(w => w.userId === currentUser.id);
-      setWishlist(userWishlist ? userWishlist.items : []);
+      api.get('/wishlist').then(res => setWishlist(res.data)).catch(() => setWishlist([]));
     } else {
       setWishlist([]);
     }
   }, [currentUser]);
 
-  const saveWishlist = (items) => {
-    const all = getData('wishlists');
-    const idx = all.findIndex(w => w.userId === currentUser.id);
-    if (idx !== -1) all[idx].items = items;
-    else all.push({ userId: currentUser.id, items });
-    saveData('wishlists', all);
-    setWishlist(items);
-  };
-
-  // type: 'destination' | 'hotel'
-  const addToWishlist = (item, type = 'destination') => {
+  const addToWishlist = async (item, type = 'destination') => {
     if (!currentUser) return false;
     if (wishlist.find(w => w.id === item.id && w.itemType === type)) return false;
-    const updated = [...wishlist, { ...item, itemType: type, addedAt: new Date().toISOString() }];
-    saveWishlist(updated);
-    return true;
+    try {
+      const res = await api.post('/wishlist', { ...item, itemType: type });
+      setWishlist(res.data);
+      return true;
+    } catch {
+      return false;
+    }
   };
 
-  const removeFromWishlist = (itemId, type = 'destination') => {
-    const updated = wishlist.filter(w => !(w.id === itemId && w.itemType === type));
-    saveWishlist(updated);
+  const removeFromWishlist = async (itemId, type = 'destination') => {
+    try {
+      const res = await api.delete(`/wishlist/${itemId}/${type}`);
+      setWishlist(res.data);
+    } catch {}
   };
 
   const isInWishlist = (itemId, type = 'destination') =>

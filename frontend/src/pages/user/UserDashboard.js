@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useAuth } from '../../context/AuthContext';
 import { useWishlist } from '../../context/WishlistContext';
-import { getData } from '../../services/localStorageService';
+import { useBookings } from '../../context/BookingContext';
+import { tripPlansAPI, budgetPlansAPI } from '../../services/api';
 import { formatDate } from '../../utils/helpers';
 import { Link } from 'react-router-dom';
 
@@ -24,15 +25,22 @@ const StatCard = ({ icon, label, value, color, to }) => (
 const UserDashboard = () => {
   const { currentUser } = useAuth();
   const { wishlist } = useWishlist();
-  const tripPlans = getData('tripPlans').filter(t => t.userId === currentUser?.id);
-  const budgetPlans = getData('budgetPlans').filter(b => b.userId === currentUser?.id);
-  const reviews = getData('reviews').filter(r => r.userId === currentUser?.id);
+  const { bookings } = useBookings();
+  const [tripPlans, setTripPlans] = useState([]);
+  const [budgetPlans, setBudgetPlans] = useState([]);
+
+  useEffect(() => {
+    if (currentUser) {
+      tripPlansAPI.getMine().then(res => setTripPlans(res.data)).catch(() => {});
+      budgetPlansAPI.getMine().then(res => setBudgetPlans(res.data)).catch(() => {});
+    }
+  }, [currentUser]);
 
   const recentActivity = [
     ...tripPlans.map(t => ({ type: 'Trip Plan', title: t.destination || 'Trip Plan', date: t.createdAt, icon: 'bi-map', color: '#307082' })),
     ...budgetPlans.map(b => ({ type: 'Budget Plan', title: b.title || 'Budget Plan', date: b.createdAt, icon: 'bi-wallet2', color: '#EA9940' })),
-    ...reviews.map(r => ({ type: 'Review', title: r.destinationName, date: r.date, icon: 'bi-star', color: '#ffc107' })),
     ...wishlist.map(w => ({ type: 'Wishlist', title: w.title, date: w.addedAt, icon: 'bi-heart', color: '#e74c3c' })),
+    ...bookings.map(b => ({ type: 'Booking', title: b.title, date: b.createdAt, icon: 'bi-calendar-check', color: '#28a745' })),
   ].sort((a, b) => new Date(b.date) - new Date(a.date)).slice(0, 8);
 
   return (
@@ -56,16 +64,16 @@ const UserDashboard = () => {
       {/* Stats */}
       <div className="row g-4 mb-4">
         <div className="col-md-6 col-lg-3">
-          <StatCard icon="bi-map" label="Trip Plans" value={tripPlans.length} color="#307082" to="/trip-planner" />
+          <StatCard icon="bi-calendar-check" label="My Bookings" value={bookings.length} color="#28a745" to="/my-bookings" />
         </div>
         <div className="col-md-6 col-lg-3">
           <StatCard icon="bi-heart-fill" label="Wishlist Items" value={wishlist.length} color="#e74c3c" to="/wishlist" />
         </div>
         <div className="col-md-6 col-lg-3">
-          <StatCard icon="bi-wallet2" label="Budget Plans" value={budgetPlans.length} color="#EA9940" to="/budget-planner" />
+          <StatCard icon="bi-map" label="Trip Plans" value={tripPlans.length} color="#307082" to="/trip-planner" />
         </div>
         <div className="col-md-6 col-lg-3">
-          <StatCard icon="bi-star-fill" label="Reviews Given" value={reviews.length} color="#ffc107" to="/reviews" />
+          <StatCard icon="bi-wallet2" label="Budget Plans" value={budgetPlans.length} color="#EA9940" to="/budget-planner" />
         </div>
       </div>
 
