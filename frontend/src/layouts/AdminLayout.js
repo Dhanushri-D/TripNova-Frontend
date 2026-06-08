@@ -36,7 +36,7 @@ const AdminLayout = () => {
     return () => document.removeEventListener('mousedown', handler);
   }, []);
 
-  const handleLogout = () => { logout(); navigate('/'); };
+  const handleLogout = () => { logout(); window.location.href = 'https://trip-nova-frontend.vercel.app/'; };
 
   const openEdit = () => {
     setEditForm({ name: currentUser?.name || '', email: currentUser?.email || '', phone: currentUser?.phone || '' });
