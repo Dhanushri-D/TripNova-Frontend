@@ -39,7 +39,7 @@ const HotelCard = ({ hotel }) => {
           </button>
         )}
       </div>
-      <div className="p-3">
+      <div className="p-3 card-body-content">
         <h6 style={{ fontFamily: 'Poppins', fontWeight: 700, marginBottom: 4 }}>{hotel.name}</h6>
         <p style={{ color: '#666', fontSize: '0.82rem', marginBottom: 8 }}>
           <i className="bi bi-geo-alt-fill me-1" style={{ color: '#307082' }}></i>{hotel.location}
@@ -49,14 +49,14 @@ const HotelCard = ({ hotel }) => {
             <span key={i} style={{ background: '#f0f0f0', color: '#555', padding: '2px 8px', borderRadius: 50, fontSize: '0.72rem' }}>{a}</span>
           ))}
         </div>
-        <div className="d-flex align-items-center justify-content-between">
+        <div className="d-flex align-items-center justify-content-between card-bottom-row">
           <div>
             <div className="star-rating mb-1">
               {renderStars(hotel.rating).map((cls, i) => <i key={i} className={`bi ${cls}`}></i>)}
             </div>
             <div className="price-tag">{formatPrice(hotel.price)}<span>/night</span></div>
           </div>
-          <Link to={`/hotels/${hotel.id}`} className={`btn btn-sm ${booked ? 'btn-outline-teal' : 'btn-teal'}`}>
+          <Link to={`/hotels/${hotel.id}`} className={`btn btn-sm ${booked ? 'btn-outline-teal btn-view-booking' : 'btn-teal'}`}>
             {booked ? 'View Booking' : 'Book Now'}
           </Link>
         </div>

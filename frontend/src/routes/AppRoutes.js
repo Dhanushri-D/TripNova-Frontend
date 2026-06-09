@@ -6,6 +6,7 @@ import AdminRoute from './AdminRoute';
 // Layouts
 import MainLayout from '../layouts/MainLayout';
 import AdminLayout from '../layouts/AdminLayout';
+import AuthLayout from '../layouts/AuthLayout';
 
 // Public Pages
 const Landing = lazy(() => import('../pages/public/Landing'));
@@ -62,7 +63,7 @@ const AppRoutes = () => (
       <Route path="/" element={<Landing />} />
 
       {/* Auth */}
-      <Route element={<MainLayout />}>
+      <Route element={<AuthLayout />}>
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />

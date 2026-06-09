@@ -38,7 +38,7 @@ const DestinationCard = ({ destination, onLoginRequired }) => {
         )}
         <span className="badge-teal" style={{ position: 'absolute', bottom: 12, left: 12 }}>{destination.category}</span>
       </div>
-      <div className="p-3">
+      <div className="p-3 card-body-content">
         <div className="d-flex align-items-start justify-content-between mb-1">
           <h6 style={{ fontFamily: 'Poppins', fontWeight: 700, margin: 0, fontSize: '1rem' }}>{destination.title}</h6>
         </div>
@@ -46,7 +46,7 @@ const DestinationCard = ({ destination, onLoginRequired }) => {
           <i className="bi bi-geo-alt-fill me-1" style={{ color: '#307082' }}></i>{destination.location}
         </p>
         <p style={{ color: '#888', fontSize: '0.83rem', marginBottom: 12, lineHeight: 1.5 }}>{truncate(destination.description, 80)}</p>
-        <div className="d-flex align-items-center justify-content-between">
+        <div className="d-flex align-items-center justify-content-between card-bottom-row">
           <div>
             <div className="star-rating mb-1">
               {renderStars(destination.rating).map((cls, i) => <i key={i} className={`bi ${cls}`}></i>)}
@@ -54,7 +54,7 @@ const DestinationCard = ({ destination, onLoginRequired }) => {
             </div>
             <div className="price-tag">{formatPrice(destination.price)}<span>/person</span></div>
           </div>
-          <Link to={`/destinations/${destination.id}`} className={`btn btn-teal btn-sm ${booked ? 'btn-outline-teal' : 'btn-teal'}`}>
+          <Link to={`/destinations/${destination.id}`} className={`btn btn-sm ${booked ? 'btn-outline-teal btn-view-booking' : 'btn-teal'}`}>
             {booked ? 'View Booking' : 'Explore'}
           </Link>
         </div>

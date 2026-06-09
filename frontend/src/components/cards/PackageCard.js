@@ -39,7 +39,7 @@ const PackageCard = ({ pkg }) => {
           </button>
         )}
       </div>
-      <div className="p-3">
+      <div className="p-3 card-body-content">
         <h6 style={{ fontFamily: 'Poppins', fontWeight: 700, marginBottom: 4 }}>{pkg.title}</h6>
         <p style={{ color: '#666', fontSize: '0.82rem', marginBottom: 6 }}>
           <i className="bi bi-geo-alt-fill me-1" style={{ color: '#307082' }}></i>{pkg.destination}
@@ -52,14 +52,14 @@ const PackageCard = ({ pkg }) => {
             ))}
           </div>
         )}
-        <div className="d-flex align-items-center justify-content-between mt-2">
+        <div className="d-flex align-items-center justify-content-between card-bottom-row mt-2">
           <div>
             <div className="star-rating mb-1">
               {renderStars(pkg.rating).map((cls, i) => <i key={i} className={`bi ${cls}`}></i>)}
             </div>
             <div className="price-tag">{formatPrice(pkg.price)}<span>/person</span></div>
           </div>
-          <Link to={`/packages/${pkg.id}`} className={`btn btn-sm ${booked ? 'btn-outline-teal' : 'btn-teal'}`}>
+          <Link to={`/packages/${pkg.id}`} className={`btn btn-sm ${booked ? 'btn-outline-teal btn-view-booking' : 'btn-teal'}`}>
             {booked ? 'View Booking' : 'View Details'}
           </Link>
         </div>
