@@ -119,12 +119,7 @@ h1, h2, h3, h4, h5, h6 {
   margin-top: auto;
 }
 
-/* View Booking small button */
-.btn-view-booking {
-  font-size: 0.72rem !important;
-  padding: 4px 10px !important;
-  font-weight: 600;
-}
+
 
 /* Glass Effect */
 .glass {

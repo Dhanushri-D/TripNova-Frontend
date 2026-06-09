@@ -54,7 +54,7 @@ const DestinationCard = ({ destination, onLoginRequired }) => {
             </div>
             <div className="price-tag">{formatPrice(destination.price)}<span>/person</span></div>
           </div>
-          <Link to={`/destinations/${destination.id}`} className={`btn btn-sm ${booked ? 'btn-outline-teal btn-view-booking' : 'btn-teal'}`}>
+          <Link to={`/destinations/${destination.id}`} className={`btn btn-sm ${booked ? 'btn-outline-teal' : 'btn-teal'}`}>
             {booked ? 'View Booking' : 'Explore'}
           </Link>
         </div>

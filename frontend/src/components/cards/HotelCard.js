@@ -56,7 +56,7 @@ const HotelCard = ({ hotel }) => {
             </div>
             <div className="price-tag">{formatPrice(hotel.price)}<span>/night</span></div>
           </div>
-          <Link to={`/hotels/${hotel.id}`} className={`btn btn-sm ${booked ? 'btn-outline-teal btn-view-booking' : 'btn-teal'}`}>
+          <Link to={`/hotels/${hotel.id}`} className={`btn btn-sm ${booked ? 'btn-outline-teal' : 'btn-teal'}`}>
             {booked ? 'View Booking' : 'Book Now'}
           </Link>
         </div>

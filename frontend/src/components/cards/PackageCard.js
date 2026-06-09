@@ -59,7 +59,7 @@ const PackageCard = ({ pkg }) => {
             </div>
             <div className="price-tag">{formatPrice(pkg.price)}<span>/person</span></div>
           </div>
-          <Link to={`/packages/${pkg.id}`} className={`btn btn-sm ${booked ? 'btn-outline-teal btn-view-booking' : 'btn-teal'}`}>
+          <Link to={`/packages/${pkg.id}`} className={`btn btn-sm ${booked ? 'btn-outline-teal' : 'btn-teal'}`}>
             {booked ? 'View Booking' : 'View Details'}
           </Link>
         </div>

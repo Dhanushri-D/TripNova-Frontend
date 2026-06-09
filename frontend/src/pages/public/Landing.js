@@ -176,10 +176,10 @@ const Landing = () => {
           </div>
           <div className="row g-4">
             {FEATURES.map((f, i) => (
-              <div key={i} className="col-lg-4 col-md-6">
+              <div key={i} className="col-lg-4 col-md-6 d-flex">
                 <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}
                   whileHover={{ y: -4 }}
-                  style={{ background: 'rgba(255,255,255,0.05)', borderRadius: 16, padding: '28px 24px', border: '1px solid rgba(255,255,255,0.08)', transition: 'all 0.3s' }}>
+                  style={{ background: 'rgba(255,255,255,0.05)', borderRadius: 16, padding: '28px 24px', border: '1px solid rgba(255,255,255,0.08)', transition: 'all 0.3s', width: '100%' }}>
                   <div style={{ width: 52, height: 52, borderRadius: 12, background: 'linear-gradient(135deg, #307082, #EA9940)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 16 }}>
                     <i className={`bi ${f.icon} text-white`} style={{ fontSize: '1.3rem' }}></i>
                   </div>
