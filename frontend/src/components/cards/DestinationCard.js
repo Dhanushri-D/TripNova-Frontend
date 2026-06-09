@@ -20,7 +20,7 @@ const DestinationCard = ({ destination, onLoginRequired }) => {
   };
 
   return (
-    <motion.div whileHover={{ y: -5 }} transition={{ duration: 0.3 }} className="card-premium h-100">
+    <motion.div whileHover={{ y: -5 }} transition={{ duration: 0.3 }} className="card-premium h-100" style={{ height: '100%' }}>
       <div style={{ position: 'relative', overflow: 'hidden' }}>
         <img src={destination.image} alt={destination.title} className="destination-card-img" />
         {booked && (
@@ -36,11 +36,13 @@ const DestinationCard = ({ destination, onLoginRequired }) => {
         <span className="badge-teal" style={{ position: 'absolute', bottom: 12, left: 12 }}>{destination.category}</span>
       </div>
       <div className="p-3 card-body-content">
-        <h6 style={{ fontFamily: 'Poppins', fontWeight: 700, margin: '0 0 4px', fontSize: '1rem' }}>{destination.title}</h6>
-        <p style={{ color: '#666', fontSize: '0.82rem', margin: '0 0 8px' }}>
-          <i className="bi bi-geo-alt-fill me-1" style={{ color: '#307082' }}></i>{destination.location}
-        </p>
-        <p className="card-description">{destination.description}</p>
+        <div className="card-content-top">
+          <h6 className="card-title">{destination.title}</h6>
+          <p className="card-location">
+            <i className="bi bi-geo-alt-fill me-1" style={{ color: '#307082' }}></i>{destination.location}
+          </p>
+          <p className="card-description">{destination.description}</p>
+        </div>
         <div className="card-bottom-row">
           <div>
             <div className="star-rating mb-1">

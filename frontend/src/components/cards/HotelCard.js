@@ -21,7 +21,7 @@ const HotelCard = ({ hotel }) => {
   };
 
   return (
-    <motion.div whileHover={{ y: -5 }} transition={{ duration: 0.3 }} className="card-premium h-100">
+    <motion.div whileHover={{ y: -5 }} transition={{ duration: 0.3 }} className="card-premium h-100" style={{ height: '100%' }}>
       <div style={{ position: 'relative', overflow: 'hidden' }}>
         <img src={hotel.image} alt={hotel.name} className="hotel-card-img" />
         {hotel.type && <span className="badge-teal" style={{ position: 'absolute', top: 12, left: 12 }}>{hotel.type}</span>}
@@ -37,14 +37,17 @@ const HotelCard = ({ hotel }) => {
         )}
       </div>
       <div className="p-3 card-body-content">
-        <h6 style={{ fontFamily: 'Poppins', fontWeight: 700, margin: '0 0 4px', fontSize: '1rem' }}>{hotel.name}</h6>
-        <p style={{ color: '#666', fontSize: '0.82rem', margin: '0 0 8px' }}>
-          <i className="bi bi-geo-alt-fill me-1" style={{ color: '#307082' }}></i>{hotel.location}
-        </p>
-        <div className="d-flex flex-wrap gap-1" style={{ marginBottom: 10 }}>
-          {(hotel.amenities || []).slice(0, 4).map((a, i) => (
-            <span key={i} style={{ background: '#f0f0f0', color: '#555', padding: '2px 8px', borderRadius: 50, fontSize: '0.72rem' }}>{a}</span>
-          ))}
+        <div className="card-content-top">
+          <h6 className="card-title">{hotel.name}</h6>
+          <p className="card-location">
+            <i className="bi bi-geo-alt-fill me-1" style={{ color: '#307082' }}></i>{hotel.location}
+          </p>
+          <p className="card-description">{hotel.description}</p>
+          <div className="card-tags">
+            {(hotel.amenities || []).slice(0, 4).map((a, i) => (
+              <span key={i} style={{ background: '#f0f0f0', color: '#555', padding: '2px 8px', borderRadius: 50, fontSize: '0.72rem', flexShrink: 0 }}>{a}</span>
+            ))}
+          </div>
         </div>
         <div className="card-bottom-row">
           <div>

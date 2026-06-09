@@ -128,8 +128,8 @@ const Destinations = () => {
             ) : (
               <div className="row g-4">
                 {filtered.map((dest, i) => (
-                  <div key={dest.id} className="col-md-6 col-xl-4">
-                    <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.05 }}>
+                  <div key={dest.id} className="col-md-6 col-xl-4 d-flex">
+                    <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.05 }} className="w-100 h-100">
                       <DestinationCard destination={dest} onLoginRequired={() => setShowLoginModal(true)} />
                     </motion.div>
                   </div>

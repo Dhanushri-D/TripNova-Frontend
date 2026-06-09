@@ -21,7 +21,7 @@ const PackageCard = ({ pkg }) => {
   };
 
   return (
-    <motion.div whileHover={{ y: -5 }} transition={{ duration: 0.3 }} className="card-premium h-100">
+    <motion.div whileHover={{ y: -5 }} transition={{ duration: 0.3 }} className="card-premium h-100" style={{ height: '100%' }}>
       <div style={{ position: 'relative', overflow: 'hidden' }}>
         <img src={pkg.image} alt={pkg.title} className="package-card-img" />
         <span className="badge-orange" style={{ position: 'absolute', top: 12, left: 12 }}>{pkg.duration}</span>
@@ -37,18 +37,18 @@ const PackageCard = ({ pkg }) => {
         )}
       </div>
       <div className="p-3 card-body-content">
-        <h6 style={{ fontFamily: 'Poppins', fontWeight: 700, margin: '0 0 4px', fontSize: '1rem' }}>{pkg.title}</h6>
-        <p style={{ color: '#666', fontSize: '0.82rem', margin: '0 0 8px' }}>
-          <i className="bi bi-geo-alt-fill me-1" style={{ color: '#307082' }}></i>{pkg.destination}
-        </p>
-        <p className="card-description">{pkg.description}</p>
-        {pkg.includes && (
-          <div className="d-flex flex-wrap gap-1" style={{ marginBottom: 10 }}>
-            {pkg.includes.slice(0, 3).map((inc, i) => (
-              <span key={i} style={{ background: 'rgba(48,112,130,0.1)', color: '#307082', padding: '2px 8px', borderRadius: 50, fontSize: '0.75rem', fontWeight: 500 }}>{inc}</span>
+        <div className="card-content-top">
+          <h6 className="card-title">{pkg.title}</h6>
+          <p className="card-location">
+            <i className="bi bi-geo-alt-fill me-1" style={{ color: '#307082' }}></i>{pkg.destination}
+          </p>
+          <p className="card-description">{pkg.description}</p>
+          <div className="card-tags">
+            {(pkg.includes || []).slice(0, 3).map((inc, i) => (
+              <span key={i} style={{ background: 'rgba(48,112,130,0.1)', color: '#307082', padding: '2px 8px', borderRadius: 50, fontSize: '0.75rem', fontWeight: 500, flexShrink: 0 }}>{inc}</span>
             ))}
           </div>
-        )}
+        </div>
         <div className="card-bottom-row">
           <div>
             <div className="star-rating mb-1">

@@ -109,8 +109,8 @@ const Home = () => {
           </motion.div>
           <div className="row g-4">
             {destinations.slice(0, 6).map((dest, i) => (
-              <div key={dest.id} className="col-lg-4 col-md-6">
-                <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}>
+              <div key={dest.id} className="col-lg-4 col-md-6 d-flex">
+                <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="w-100 h-100">
                   <DestinationCard destination={dest} onLoginRequired={() => setShowLoginModal(true)} />
                 </motion.div>
               </div>
@@ -185,8 +185,8 @@ const Home = () => {
           </motion.div>
           <div className="row g-4">
             {packages.slice(0, 3).map((pkg, i) => (
-              <div key={pkg.id} className="col-lg-4 col-md-6">
-                <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}>
+              <div key={pkg.id} className="col-lg-4 col-md-6 d-flex">
+                <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="w-100 h-100">
                   <PackageCard pkg={pkg} />
                 </motion.div>
               </div>
@@ -210,8 +210,8 @@ const Home = () => {
           </motion.div>
           <div className="row g-4">
             {hotels.slice(0, 3).map((hotel, i) => (
-              <div key={hotel.id} className="col-lg-4 col-md-6">
-                <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}>
+              <div key={hotel.id} className="col-lg-4 col-md-6 d-flex">
+                <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="w-100 h-100">
                   <HotelCard hotel={hotel} />
                 </motion.div>
               </div>
