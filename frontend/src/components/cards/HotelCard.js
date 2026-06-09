@@ -54,7 +54,7 @@ const HotelCard = ({ hotel }) => {
             <div className="star-rating mb-1">
               {renderStars(hotel.rating).map((cls, i) => <i key={i} className={`bi ${cls}`}></i>)}
             </div>
-            <div className="price-tag">{formatPrice(hotel.price)}<span>/night</span></div>
+            <div className="price-tag">{formatPrice(hotel.price)}</div>
           </div>
           <Link to={`/hotels/${hotel.id}`} className={`destination-card-btn ${booked ? 'btn btn-outline-teal' : 'btn btn-teal'}`}>
             {booked ? 'View Booking' : 'Book Now'}

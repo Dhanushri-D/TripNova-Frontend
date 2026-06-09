@@ -49,7 +49,7 @@ const DestinationCard = ({ destination, onLoginRequired }) => {
               {renderStars(destination.rating).map((cls, i) => <i key={i} className={`bi ${cls}`}></i>)}
               <span style={{ color: '#666', fontSize: '0.8rem', marginLeft: 4 }}>{destination.rating}</span>
             </div>
-            <div className="price-tag">{formatPrice(destination.price)}<span>/person</span></div>
+            <div className="price-tag">{formatPrice(destination.price)}</div>
           </div>
           <Link
             to={`/destinations/${destination.id}`}

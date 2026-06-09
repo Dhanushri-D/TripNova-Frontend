@@ -54,7 +54,7 @@ const PackageCard = ({ pkg }) => {
             <div className="star-rating mb-1">
               {renderStars(pkg.rating).map((cls, i) => <i key={i} className={`bi ${cls}`}></i>)}
             </div>
-            <div className="price-tag">{formatPrice(pkg.price)}<span>/person</span></div>
+            <div className="price-tag">{formatPrice(pkg.price)}</div>
           </div>
           <Link to={`/packages/${pkg.id}`} className={`destination-card-btn ${booked ? 'btn btn-outline-teal' : 'btn btn-teal'}`}>
             {booked ? 'View Booking' : 'View Details'}
