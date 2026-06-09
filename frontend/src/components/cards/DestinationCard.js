@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { useWishlist } from '../../context/WishlistContext';
 import { useAuth } from '../../context/AuthContext';
 import { useBookings } from '../../context/BookingContext';
-import { renderStars, formatPrice, truncate } from '../../utils/helpers';
+import { renderStars, formatPrice } from '../../utils/helpers';
 
 const DestinationCard = ({ destination, onLoginRequired }) => {
   const { addToWishlist, removeFromWishlist, isInWishlist } = useWishlist();
@@ -20,12 +20,9 @@ const DestinationCard = ({ destination, onLoginRequired }) => {
   };
 
   return (
-    <motion.div whileHover={{ y: -6 }} transition={{ duration: 0.3 }} className="card-premium h-100">
+    <motion.div whileHover={{ y: -5 }} transition={{ duration: 0.3 }} className="card-premium h-100">
       <div style={{ position: 'relative', overflow: 'hidden' }}>
-        <img src={destination.image} alt={destination.title} className="destination-card-img" style={{ transition: 'transform 0.4s ease' }}
-          onMouseEnter={e => e.target.style.transform = 'scale(1.05)'}
-          onMouseLeave={e => e.target.style.transform = 'scale(1)'}
-        />
+        <img src={destination.image} alt={destination.title} className="destination-card-img" />
         {booked && (
           <span style={{ position: 'absolute', top: 12, right: 12, background: '#28a745', color: 'white', padding: '3px 10px', borderRadius: 50, fontSize: '0.72rem', fontWeight: 700, display: 'flex', alignItems: 'center', gap: 4 }}>
             <i className="bi bi-check-circle-fill"></i> Booked
@@ -39,14 +36,12 @@ const DestinationCard = ({ destination, onLoginRequired }) => {
         <span className="badge-teal" style={{ position: 'absolute', bottom: 12, left: 12 }}>{destination.category}</span>
       </div>
       <div className="p-3 card-body-content">
-        <div className="d-flex align-items-start justify-content-between mb-1">
-          <h6 style={{ fontFamily: 'Poppins', fontWeight: 700, margin: 0, fontSize: '1rem' }}>{destination.title}</h6>
-        </div>
-        <p style={{ color: '#666', fontSize: '0.82rem', margin: '4px 0 8px' }}>
+        <h6 style={{ fontFamily: 'Poppins', fontWeight: 700, margin: '0 0 4px', fontSize: '1rem' }}>{destination.title}</h6>
+        <p style={{ color: '#666', fontSize: '0.82rem', margin: '0 0 8px' }}>
           <i className="bi bi-geo-alt-fill me-1" style={{ color: '#307082' }}></i>{destination.location}
         </p>
-        <p style={{ color: '#888', fontSize: '0.83rem', marginBottom: 12, lineHeight: 1.5 }}>{truncate(destination.description, 80)}</p>
-        <div className="d-flex align-items-center justify-content-between card-bottom-row">
+        <p className="card-description">{destination.description}</p>
+        <div className="card-bottom-row">
           <div>
             <div className="star-rating mb-1">
               {renderStars(destination.rating).map((cls, i) => <i key={i} className={`bi ${cls}`}></i>)}
@@ -54,7 +49,10 @@ const DestinationCard = ({ destination, onLoginRequired }) => {
             </div>
             <div className="price-tag">{formatPrice(destination.price)}<span>/person</span></div>
           </div>
-          <Link to={`/destinations/${destination.id}`} className={`btn btn-sm ${booked ? 'btn-outline-teal' : 'btn-teal'}`}>
+          <Link
+            to={`/destinations/${destination.id}`}
+            className={`destination-card-btn ${booked ? 'btn btn-outline-teal' : 'btn btn-teal'}`}
+          >
             {booked ? 'View Booking' : 'Explore'}
           </Link>
         </div>
