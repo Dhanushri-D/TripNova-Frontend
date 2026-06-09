@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Outlet, NavLink } from 'react-router-dom';
+import { Outlet, NavLink, Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { getData } from '../services/localStorageService';
 
@@ -68,7 +68,7 @@ const AdminLayout = () => {
       {/* ── Top Brand Bar ── */}
       <div style={{ background: '#12212E', padding: '0 28px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: 56, position: 'sticky', top: 0, zIndex: 1100 }}>
         {/* Logo */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+        <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: 10, textDecoration: 'none' }}>
           <div style={{ width: 32, height: 32, borderRadius: 8, background: 'linear-gradient(135deg, #307082, #EA9940)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
             <i className="bi bi-compass" style={{ color: 'white', fontSize: '1rem' }}></i>
           </div>
@@ -76,7 +76,7 @@ const AdminLayout = () => {
             Trip<em style={{ color: '#EA9940', fontStyle: 'normal' }}>Nova</em>
             <span style={{ fontSize: '0.62rem', background: '#307082', color: 'white', borderRadius: 4, padding: '1px 6px', marginLeft: 8, fontWeight: 700, letterSpacing: 1, verticalAlign: 'middle' }}>ADMIN</span>
           </span>
-        </div>
+        </Link>
 
         {/* Right */}
         <div style={{ display: 'flex', alignItems: 'center', gap: 18 }}>
