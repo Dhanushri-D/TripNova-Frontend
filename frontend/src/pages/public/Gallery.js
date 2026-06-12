@@ -45,11 +45,7 @@ const Gallery = () => {
             <h4 style={{ fontFamily: 'Poppins', fontWeight: 700, margin: 0 }}>Travel Memories</h4>
             <p style={{ color: '#888', margin: 0, fontSize: '0.9rem' }}>{gallery.length} photos shared</p>
           </div>
-          {currentUser && (
-            <button onClick={() => setShowForm(!showForm)} className="btn btn-teal">
-              <i className="bi bi-plus-lg me-2"></i>Share Memory
-            </button>
-          )}
+
         </div>
 
         {showForm && (
